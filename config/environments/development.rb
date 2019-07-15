@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   config.x.webpacker[:dev_server_host] = 'http://localhost:3035'
   # Settings specified here will take precedence over those in config/application.rb.

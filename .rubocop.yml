@@ -1,0 +1,10 @@
+require: rubocop-rails
+LineLength:
+  Max: 100
+
+AllCops:
+  Exclude:
+    - 'bin/*'
+    - 'node_modules/**/*'
+    - 'db/seeds.rb'
+    - 'db/schema.rb'
