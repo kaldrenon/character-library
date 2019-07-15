@@ -11,7 +11,7 @@ Bundler.require(*Rails.groups)
 #
 # Core app
 #
-module TestWebpackerVue
+module CharacterLibrary
   #
   # The app
   #
