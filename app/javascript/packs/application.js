@@ -17,16 +17,30 @@
 
 import Vue from 'vue'
 import App from '../components/app.vue'
+import ajax from 'vuejs-ajax'
+import router from '../routes.js'
+
 
 document.addEventListener('DOMContentLoaded', () => {
   document.body.appendChild(document.createElement('app'))
+
+  Vue.config.productionTip = false
+  Vue.use(ajax)
+
+  Vue.directive('focus', {
+    inserted: function (el) {
+      el.focus()
+      el.select()
+    }
+  })
+
   const app = new Vue({
     el: 'app',
     template: '<App/>',
+    router: router,
     components: { App },
     render: h => h(App)
   })
 
   console.log(app)
-  console.log('this is getting served');
 })
