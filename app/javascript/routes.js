@@ -6,10 +6,15 @@ Vue.use(VueRouter)
 
 var router = new VueRouter({
   base: __dirname,
-  routes: [{
-    path: '/',
-    component: App
-  }]
+  routes: [
+    {
+      path: '/',
+      component: App
+    },
+    {
+      path: '/character/:id',
+      component: App
+    }]
 })
 
 export default router

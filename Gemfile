@@ -5,8 +5,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+gem 'fast_jsonapi'
 gem 'foreman'
-gem 'jsonapi-rails'
+gem 'oj'
 gem 'pg'
 gem 'simple_form'
 gem 'webpacker'

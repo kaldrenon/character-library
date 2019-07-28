@@ -1,12 +1,12 @@
 <template>
   <div id="stat-block">
     <ul>
-      <li><span class="name">Strength</span><span class="value">{{ str }}</span></li>
-      <li><span class="name">Dexterity</span><span class="value">{{ dex }}</span></li>
-      <li><span class="name">Constitution</span><span class="value">{{ con }}</span></li>
-      <li><span class="name">Intelligence</span><span class="value">{{ int }}</span></li>
-      <li><span class="name">Wisdom</span><span class="value">{{ wis }}</span></li>
-      <li><span class="name">Charisma</span><span class="value">{{ cha }}</span></li>
+      <li><span class="name">Strength</span><span class="value">{{ blockData.strength }}</span></li>
+      <li><span class="name">Dexterity</span><span class="value">{{ blockData.dexterity }}</span></li>
+      <li><span class="name">Constitution</span><span class="value">{{ blockData.constitution }}</span></li>
+      <li><span class="name">Intelligence</span><span class="value">{{ blockData.intelligence }}</span></li>
+      <li><span class="name">Wisdom</span><span class="value">{{ blockData.wisdom }}</span></li>
+      <li><span class="name">Charisma</span><span class="value">{{ blockData.charisma }}</span></li>
     </ul>
   </div>
 </template>
@@ -14,15 +14,23 @@
 <script>
 export default {
   name: "StatBlock",
-  data: function () {
-    return {
-      str: 18,
-      dex: 18,
-      con: 18,
-      int: 18,
-      wis: 18,
-      cha: 18
+  props: {
+    blockData: {
+      typed: Object,
+      default: () =>  {
+        return {
+          strength: 10,
+          dexterity: 10,
+          constitution: 10,
+          intelligence: 10,
+          wisdom: 10,
+          charisma: 10,
+        }
+      }
     }
+  },
+  data: function () {
+    return {}
   }
 }
 </script>

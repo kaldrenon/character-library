@@ -9,7 +9,7 @@ class CharacterController < ApplicationController
   def show
     @character = Character.find(params[:id])
 
-    render jsonapi: @character
+    jr @character
   end
 
   def new; end
@@ -18,9 +18,9 @@ class CharacterController < ApplicationController
     @character = Character.new(params[:character])
 
     if @character.save
-      render jsonapi: @character
+      jr @character
     else
-      render jsonapi: @character.errors
+      jr @character.errors
     end
   end
 
@@ -28,5 +28,9 @@ class CharacterController < ApplicationController
 
   def character_params
     params.require(:character).permit!
+  end
+
+  def jr(character)
+    render json: CharacterSerializer.new(character).serialized_json
   end
 end

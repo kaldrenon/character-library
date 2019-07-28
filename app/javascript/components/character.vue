@@ -1,31 +1,48 @@
 <template>
   <div id="character">
-    <h1 class="charName">{{ name }}</h1>
+    <h1 class="charName">{{ attributes.name }}</h1>
     <section class="basic-info">
-      <span class="level">Level {{ level }}</span>
-      <span class="race">{{ race }}</span>
-      <span class="charClass">{{ charClass }}</span>
+      <span class="level">Level {{ attributes.level }}</span>
+      <span class="race">{{ attributes.race }}</span>
+      <span class="charClass">{{ attributes.charClass }}</span>
     </section>
-    <stat-block str='18' dex='18' con='18' int='18' wis='18' cha='18'/>
+    <stat-block :blockData=attributes.stat_block></stat-block>
   </div>
 
       </div>
 </template>
 
 <script>
+const axios = require('axios')
 import StatBlock from './stat-block.vue'
 
 export default {
   name: "Character",
+  created () {
+    this.loadCharacter()
+  },
   components: {
     'stat-block': StatBlock
   },
   data: function () {
     return {
-      name: "Hero Person",
-      level: "1",
-      race: "Human",
-      charClass: "Fighter"
+      attributes: {
+        name: "nothing",
+        level: "1",
+        race: "Human",
+        charClass: "Fighter"
+      }
+    }
+  },
+  methods: {
+    loadCharacter () {
+      axios
+        .get('/api/character/1')
+        .then(res => {
+          var info = res.data.data.attributes
+          console.log(info)
+          Object.assign(this.attributes, info)
+        })
     }
   }
 }
